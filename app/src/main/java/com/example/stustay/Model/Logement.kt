@@ -1,7 +1,7 @@
 package com.example.stustay.Model
 
 data class Logement(
-    val id: String,
+    val images: String,
     val titre: String,
     val description: String,
     val nom: String,

@@ -1,22 +1,36 @@
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stustay.Model.Logement
 import com.example.stustay.R
 
-class LogementAdapter(private val logements: List<Logement>) : RecyclerView.Adapter<LogementAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+// LogementAdapter.kt
+class LogementAdapter(var logements: List<Logement>) :
+    RecyclerView.Adapter<LogementAdapter.LogementViewHolder>() {
+
+    class LogementViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageViewLogement: ImageView = itemView.findViewById(R.id.imageViewLogement)
+        val textViewTitre: TextView = itemView.findViewById(R.id.textViewTitre)
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_logement_detail, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogementViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_logement, parent, false)
+        return LogementViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LogementViewHolder, position: Int) {
+        val logement = logements[position]
+
+
+
+        holder.textViewTitre.text = logement.titre
 
     }
 
@@ -24,3 +38,4 @@ class LogementAdapter(private val logements: List<Logement>) : RecyclerView.Adap
         return logements.size
     }
 }
+
