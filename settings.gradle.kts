@@ -13,5 +13,9 @@ dependencyResolutionManagement {
     }
 }
 
+<<<<<<< HEAD
+rootProject.name = "Payment"
+=======
 rootProject.name = "StuStay"
+>>>>>>> 86cdfde0d8ceebcf89d007985ea5d2bbf16ed6a9
 include(":app")

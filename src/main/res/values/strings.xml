@@ -1,0 +1,22 @@
+<resources>
+<<<<<<< HEAD
+    <string name="app_name">YourAppName</string>
+
+    <string name="label_payment_amount">Payment Amount</string>
+    <string name="hint_enter_amount">Enter Amount</string>
+
+    <string name="label_card_number">Card Number</string>
+    <string name="hint_enter_card_number">Enter Card Number</string>
+
+    <string name="label_expiration_date">Expiration Date</string>
+    <string name="hint_enter_expiration_date">MM/YY</string>
+
+    <string name="label_cvv">CVV</string>
+    <string name="hint_enter_cvv">Enter CVV</string>
+
+    <string name="button_pay">Pay</string>
+</resources>
+=======
+    <string name="app_name">StuStay</string>
+</resources>
+>>>>>>> 86cdfde0d8ceebcf89d007985ea5d2bbf16ed6a9
