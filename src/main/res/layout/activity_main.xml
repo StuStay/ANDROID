@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<?xml version="1.0" encoding="utf-8"?>
->>>>>>> 86cdfde0d8ceebcf89d007985ea5d2bbf16ed6a9
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="match_parent"
@@ -67,7 +62,7 @@
     <EditText
         android:id="@+id/editcardtext"
         android:layout_width="330dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
@@ -95,27 +90,30 @@
     <EditText
         android:id="@+id/editcvvtext"
         android:layout_width="330dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:hint="   Enter your CVV "
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/confirmbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editcardtext" />
+        app:layout_constraintTop_toBottomOf="@+id/editcardtext"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editdatetext"
         android:layout_width="330dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:hint="   Enter your MM/YY "
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/editcvvtext"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="38dp" />
 
     <ImageView
@@ -135,7 +133,5 @@
 
 
 
-=======
 
-</androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> 86cdfde0d8ceebcf89d007985ea5d2bbf16ed6a9
+

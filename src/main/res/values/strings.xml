@@ -1,5 +1,4 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">YourAppName</string>
 
     <string name="label_payment_amount">Payment Amount</string>
@@ -16,7 +15,4 @@
 
     <string name="button_pay">Pay</string>
 </resources>
-=======
-    <string name="app_name">StuStay</string>
-</resources>
->>>>>>> 86cdfde0d8ceebcf89d007985ea5d2bbf16ed6a9
+
