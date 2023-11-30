@@ -1,5 +1,4 @@
 package tn.esprit.payment
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import tn.esprit.payment.databinding.PaymentmethodBinding
