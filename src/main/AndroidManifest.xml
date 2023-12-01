@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,15 +14,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Payment"
         tools:targetApi="31">
+
+        <!-- Launcher Activity -->
         <activity
-            android:name=".view.PaymentListActivity"
-            android:exported="true"
-            >
+            android:name=".view.PaymentMethodActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- New Activities -->
+        <activity
+            android:name=".view.CashPendingActivity"
+            android:label="Cash Pending Activity" />
+
+        <activity
+            android:name=".view.ConfirmationActivity"
+            android:label="Confirmation Activity" />
+
+        <activity
+            android:name=".view.CreditCardActivity"
+            android:label="Credit Card Activity" />
+
+        <activity
+            android:name=".view.PaymentListActivity"
+            android:label="Payment List Activity" />
 
     </application>
 

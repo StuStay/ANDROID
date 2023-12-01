@@ -67,6 +67,7 @@
         android:ems="10"
         android:hint="   Enter your 16-digit credit card number "
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +96,7 @@
         android:ems="10"
         android:hint="   Enter your CVV "
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/confirmbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -107,13 +109,17 @@
         android:layout_width="330dp"
         android:layout_height="48dp"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="61dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:hint="   Enter your MM/YY "
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/confirmbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editcvvtext"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="38dp" />
+        tools:textColor="#000000" />
 
     <ImageView
         android:id="@+id/backimg"

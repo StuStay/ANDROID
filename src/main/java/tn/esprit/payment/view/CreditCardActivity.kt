@@ -19,7 +19,7 @@ private lateinit var editCvv: EditText
 private lateinit var editExpiryDate: EditText
 private lateinit var btnSubmit: Button
 
-//private val paymentRepository = PaymentRepository(PaymentRepository.buildService())
+private val paymentRepository = PaymentRepository(PaymentRepository.buildService())
 
 override fun onCreate(savedInstanceState: Bundle?) {
 super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ paymentType = listOf("water")
 )
 
 CoroutineScope(Dispatchers.IO).launch {
-//paymentRepository.postPayment(paymentData)
+paymentRepository.postPayment(paymentData)
 
 navigateToPaymentList()
 }
