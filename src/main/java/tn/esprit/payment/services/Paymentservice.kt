@@ -6,6 +6,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import tn.esprit.payment.models.Payment
 
 interface Paymentservice {
     @POST("api/payments")
@@ -15,7 +16,8 @@ interface Paymentservice {
     suspend fun deletePayment(@Path("paymentId") paymentId: String)
 
     @GET("api/payments")
-    suspend fun getAllPayments(): List<JsonObject>
+    suspend fun getAllPayments(): List<Payment>
 }
+
 
 

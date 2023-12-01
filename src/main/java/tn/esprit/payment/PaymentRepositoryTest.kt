@@ -1,5 +1,6 @@
 package tn.esprit.payment
 import com.google.gson.JsonObject
+import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -21,6 +22,11 @@ class PaymentRepositoryTest {
             }
 
             override suspend fun deletePayment(paymentId: String) {
+                println("Delete succeeded! Payment ID: $paymentId")
+            }
+
+            override suspend fun getAllPayments(): List<Payment> {
+                return emptyList()
             }
         }
         repository = PaymentRepository(mockService)
@@ -29,7 +35,7 @@ class PaymentRepositoryTest {
     @Test
     fun testPostPayment() {
         val paymentData = Payment(
-            amount = 900,
+            amount = 3,
             date = "2023-12-01",
             method = "Credit Card",
             numberOfRoommates = 4,
@@ -42,7 +48,29 @@ class PaymentRepositoryTest {
             repository.postPayment(paymentData)
         }
 
+        if (capturedData != null) {
+            println("Post succeeded! Captured data: $capturedData")
+        } else {
+            println("Post failed!")
+        }
+    }
+
+    @Test
+    fun testGetAllPayments() {
+        runBlocking {
+            val payments = repository.getAllPayments()
+            println("Received payments: $payments")
+            assertNotNull(payments)
+        }
+    }
+
+    @Test
+    fun testDeletePayment() {
+        val paymentIdToDelete = "6568079ff99d2638d97fa0f7"
+
+        runBlocking {
+            repository.deletePayment(paymentIdToDelete)
+        }
+
     }
 }
-
-

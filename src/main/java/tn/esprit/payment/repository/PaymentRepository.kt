@@ -10,7 +10,7 @@ class PaymentRepository(private var paymentservice: Paymentservice) {
 
  init {
   val retrofit = Retrofit.Builder()
-   .baseUrl("http://localhost:3000/")
+   .baseUrl("http://192.168.1.6:3000/")
    .addConverterFactory(GsonConverterFactory.create())
    .build()
 
@@ -25,10 +25,15 @@ class PaymentRepository(private var paymentservice: Paymentservice) {
    addProperty("numberOfRoommates", paymentData.numberOfRoommates)
    addProperty("isRecurringPayment", paymentData.isRecurringPayment)
    addProperty("recurringPaymentFrequency", paymentData.recurringPaymentFrequency)
-
    add("paymentType", Gson().toJsonTree(paymentData.paymentType))
   }
 
   paymentservice.postPayment(jsonData)
  }
-}
+ suspend fun getAllPayments(): List<Payment> {
+  return paymentservice.getAllPayments()
+  }
+ suspend fun deletePayment(paymentId: String) {
+  paymentservice.deletePayment(paymentId)
+ }
+ }
