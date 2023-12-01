@@ -13,4 +13,10 @@ class PaymentViewModel(private val repository: PaymentRepository) : ViewModel() 
             repository.postPayment(paymentData)
         }
     }
+
+    fun getPayments() {
+        viewModelScope.launch {
+            val payments = repository.getAllPayments()
+        }
+    }
 }

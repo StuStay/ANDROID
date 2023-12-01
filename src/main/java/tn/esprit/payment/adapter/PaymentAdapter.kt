@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import tn.esprit.payment.R
 import tn.esprit.payment.databinding.ItemPaymentBinding
 import tn.esprit.payment.models.Payment
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PaymentAdapter(
     private var context: Context,
@@ -34,7 +36,7 @@ class PaymentAdapter(
         val currentPayment: Payment = payments[position]
 
         holder.textViewAmount.text = context.getString(R.string.label_amount, currentPayment.amount)
-        holder.textViewDate.text = context.getString(R.string.label_date, currentPayment.date)
+        holder.textViewDate.text = formatDate(currentPayment.date)
         holder.textViewMethod.text = context.getString(R.string.label_method, currentPayment.method)
         holder.textViewNumberOfRoommates.text =
             context.getString(R.string.label_number_of_roommates, currentPayment.numberOfRoommates)
@@ -44,6 +46,16 @@ class PaymentAdapter(
             context.getString(R.string.label_recurring_payment_frequency, currentPayment.recurringPaymentFrequency)
         holder.textViewPaymentType.text =
             context.getString(R.string.label_payment_type, currentPayment.paymentType.joinToString(", "))
+    }
+
+    private fun formatDate(dateString: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        val date = inputFormat.parse(dateString)
+        val formattedDate = outputFormat.format(date!!)
+
+        return "Date: $formattedDate"
     }
 
     override fun getItemCount(): Int {

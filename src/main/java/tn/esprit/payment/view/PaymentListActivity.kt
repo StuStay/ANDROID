@@ -1,5 +1,6 @@
 package tn.esprit.payment.view
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,9 +25,9 @@ class PaymentListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.paymentlist)
-
+        Log.i("payment_page", "this is payment page")
         val recyclerViewPayments = findViewById<RecyclerView>(R.id.recyclerView)
-        paymentAdapter = PaymentAdapter(this, emptyList())
+        paymentAdapter = PaymentAdapter(this@PaymentListActivity, emptyList())
         recyclerViewPayments.adapter = paymentAdapter
         recyclerViewPayments.layoutManager = LinearLayoutManager(this)
 
@@ -48,12 +49,13 @@ class PaymentListActivity : AppCompatActivity() {
                 val payments = withContext(Dispatchers.IO) {
                     paymentRepository.getAllPayments()
                 }
-                println("Received payments: $payments")
+                Log.i("Received payments:",  "$payments")
                 withContext(Dispatchers.Main) {
                     paymentAdapter.setData(payments)
                     println("Data set to adapter. Item count: ${paymentAdapter.itemCount}")
                 }
             } catch (e: Exception) {
+                Log.i("error=", e.toString())
                 e.printStackTrace()
             }
         }
@@ -63,15 +65,12 @@ class PaymentListActivity : AppCompatActivity() {
     private fun createMockService(): Paymentservice {
         return object : Paymentservice {
             override suspend fun postPayment(jsonData: JsonObject) {
-                // Implementation for postPayment
             }
 
             override suspend fun deletePayment(paymentId: String) {
-                // Implementation for deletePayment
             }
 
             override suspend fun getAllPayments(): List<Payment> {
-                // This implementation should be replaced with your actual API call
                 return emptyList()
             }
         }

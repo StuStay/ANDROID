@@ -54,4 +54,14 @@
         android:text="@string/label_payment_type"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="#2CABCD"
+        android:text="Delete"
+        android:textColor="#311B92" />
+
+
 </LinearLayout>
