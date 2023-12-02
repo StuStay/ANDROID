@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -9,12 +7,10 @@ plugins {
 android {
     namespace = "com.example.stustay"
     compileSdk = 34
-   /* viewBinding {
-        enabled = true
-    }*/
     buildFeatures {
         dataBinding = true
     }
+
     defaultConfig {
         applicationId = "com.example.stustay"
         minSdk = 24
@@ -41,9 +37,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation ("com.google.android.material:material:1.4.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -59,8 +59,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
-   implementation ("com.github.bumptech.glide:glide:4.12.0")
-   // kapt ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    // kapt ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("com.google.android.gms:play-services-maps:17.0.1")
 
@@ -73,6 +73,7 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.2.0")
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("com.google.android.material:material:1.4.0")
+
 
 
 

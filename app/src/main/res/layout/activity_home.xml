@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <ImageView
+        android:id="@+id/imageBare"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:src="@drawable/bare" />
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="186dp"
@@ -19,21 +24,29 @@
         android:textColor="#093960"
         android:textSize="40dp"
         android:textStyle="bold" />
-
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <EditText
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/textTitle"
-        android:layout_marginTop="8dp">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageBare"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Search adresse near you"
+        android:padding="16dp" />
 
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchBar"
+        android:layout_marginTop="8dp">
 
         <LinearLayout
             android:id="@+id/linearContainer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
 
             <androidx.cardview.widget.CardView
@@ -77,8 +90,12 @@
                         android:layout_below="@id/description1"
                         android:layout_marginStart="23dp"
                         android:layout_marginTop="49dp"
+                        android:backgroundTint="#67BAD0"
+                        android:minHeight="49dp"
                         android:onClick="onOrderNowClick"
-                        android:text="Order Now" />
+                        android:text="Order Now"
+                        tools:ignore="TouchTargetSizeCheck" />
+
 
                     <Button
                         android:id="@+id/btnHeart1"
@@ -88,6 +105,7 @@
                         android:layout_marginLeft="119dp"
                         android:layout_marginTop="43dp"
                         android:layout_toRightOf="@id/btnOrderNow1"
+                        android:backgroundTint="#67BAD0"
                         android:text="❤️" />
 
                 </RelativeLayout>
@@ -131,8 +149,8 @@
                         android:layout_below="@id/description2"
                         android:layout_marginStart="23dp"
                         android:layout_marginTop="37dp"
-                        android:text="Order Now"
-                        android:onClick="onOrderNowClick"/>
+                        android:onClick="onOrderNowClick"
+                        android:text="Order Now" />
 
                     <Button
                         android:id="@+id/btnHeart2"
@@ -202,5 +220,7 @@
 
 
         </LinearLayout>
-    </ScrollView>
+    </HorizontalScrollView>
+
+
 </RelativeLayout>

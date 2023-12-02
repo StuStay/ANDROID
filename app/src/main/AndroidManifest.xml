@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.stustay">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -20,28 +18,24 @@
         android:theme="@style/Theme.StuStay"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-
-        <service
-            android:name=".Api.LogementApiService"
-            android:enabled="true"
-            android:exported="false"></service>
-
         <activity
-            android:name=".Ui.Activities.MainActivity"
+            android:name=".PostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".DetailsActivity"
-        android:label="Details Activity">
-    </activity>
-
-
     </application>
 
 </manifest>

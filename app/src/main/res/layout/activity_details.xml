@@ -1,19 +1,37 @@
 
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/back"
+            android:contentDescription="Back"
+            android:onClick="onBackButtonClick" />
+    </androidx.appcompat.widget.Toolbar>
     <ImageButton
         android:id="@+id/btnShare"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_below="@id/btnPayer"
-        android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:src="@android:drawable/ic_menu_share" />
+        android:src="@android:drawable/ic_menu_share"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageDetails"
@@ -81,6 +99,7 @@
         android:text="Lieu" />
 
 
+
     <Button
         android:id="@+id/btnPayer"
         android:layout_width="match_parent"
@@ -88,10 +107,10 @@
         android:layout_below="@id/tvLieu"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="-48dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/g_black"
+        android:backgroundTint="@color/bluecyan"
         android:text="Payer" />
 
 </RelativeLayout>

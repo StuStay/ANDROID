@@ -1,38 +1,22 @@
-package com.example.stustay.Ui.Activities
+package com.example.stustay
 
-import LogementAdapter
-import LogementViewModel
-import android.os.Bundle
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.stustay.R
+import android.os.Bundle
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var viewModel: LogementViewModel
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var logementAdapter: LogementAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
-        viewModel = ViewModelProvider(this).get(LogementViewModel::class.java)
+        val btnOrderNow1: Button = findViewById(R.id.btnOrderNow1)
 
-        recyclerView = findViewById(R.id.recyclerViewLogements)
-        logementAdapter = LogementAdapter(emptyList())
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = logementAdapter
-
-        viewModel.logements.observe(this, Observer { logements ->
-            logementAdapter.logements = logements
-            logementAdapter.notifyDataSetChanged()
-        })
-
-        viewModel.getAllLogements()
+        // Set a click listener for the Order Now button
+        btnOrderNow1.setOnClickListener {
+            // When the button is clicked, launch the detail activity
+            val intent = Intent(this, DetailsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

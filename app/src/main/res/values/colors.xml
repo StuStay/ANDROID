@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="g_black">#33405f</color>
     <color name="lunchScreenBackground">#FFFFFF</color>
+    <color name="blue">#2196F3</color>
+    <color name="bluecyan">#67BAD0</color>
 </resources>

@@ -10,16 +10,13 @@
         android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/btnUploadImage"
+
+        <ImageView
+            android:id="@+id/imageBare"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload Images"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#33405F"
-        android:textColor="#33405F"
-        />
+            android:layout_height="111dp"
+            android:src="@drawable/logo" />
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +32,7 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Description -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilDescription"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -109,7 +106,7 @@
                 android:inputType="phone"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Lieu -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilLieu"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -123,24 +120,14 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnChooseLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choisir la Localisation"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#33405f"
-        android:textColor="#33405f"
-        />
 
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#33405F"
-        android:text="Soumettre"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="16dp" />
+            android:backgroundTint="#67BAD0"
+            android:text="Soumettre"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>

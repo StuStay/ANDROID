@@ -4,7 +4,7 @@ import tn.esprit.safeguardapplication.Api.LogementApiService
 
 object RetrofitInstance {
 
-    private const val BASE_URL = ""
+    private const val BASE_URL = "http://localhost:3000"
 
     val logementApiService: LogementApiService by lazy {
         Retrofit.Builder()
