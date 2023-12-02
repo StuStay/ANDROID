@@ -1,80 +1,46 @@
-import android.Manifest
-import android.app.Activity
+package com.example.stustay
+
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.MediaStore
-import android.widget.Button
-import android.widget.ImageView
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.example.stustay.R
+import com.google.android.material.textfield.TextInputEditText
 
 class PostActivity : AppCompatActivity() {
-
-    private val PICK_IMAGE_REQUEST = 1
-    private val READ_EXTERNAL_STORAGE_REQUEST = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
-
-        val btnSelectImage: Button = findViewById(R.id.btnSelectImage)
-        btnSelectImage.setOnClickListener {
-            // Check if permission is granted
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                // Permission is already granted, open the gallery
-                openGallery()
-            } else {
-                // Request permission
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    READ_EXTERNAL_STORAGE_REQUEST
-                )
-            }
-        }
-
-        // Add other initialization code as needed
     }
 
-    private fun openGallery() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST)
-    }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    fun onSubmitClick(view: View) {
 
-        if (requestCode == READ_EXTERNAL_STORAGE_REQUEST) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        val titre = findViewById<TextInputEditText>(R.id.etTitre).text.toString()
+        val description = findViewById<TextInputEditText>(R.id.etDescription).text.toString()
+        val nom = findViewById<TextInputEditText>(R.id.etNom).text.toString()
+        val nombreChambre = findViewById<TextInputEditText>(R.id.etNombreChambre).text.toString()
+        val prix = findViewById<TextInputEditText>(R.id.etPrix).text.toString()
+        val contact = findViewById<TextInputEditText>(R.id.etContact).text.toString()
+        val lieu = findViewById<TextInputEditText>(R.id.etLieu).text.toString()
 
-                openGallery()
-            } else {
+        if (titre.isEmpty() || description.isEmpty() || nom.isEmpty() || nombreChambre.isEmpty() ||
+            prix.isEmpty() || contact.isEmpty() || lieu.isEmpty()) {
 
-            }
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            return
         }
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("TITRE", titre)
+        intent.putExtra("DESCRIPTION", description)
+        intent.putExtra("NOM", nom)
+        intent.putExtra("NOMBRE_CHAMBRE", nombreChambre)
+        intent.putExtra("PRIX", prix)
+        intent.putExtra("CONTACT", contact)
+        intent.putExtra("LIEU", lieu)
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            // Get the selected image URI
-            val imageUri = data.data
-
-            // Update the ImageView with the selected image
-            val imageView: ImageView = findViewById(R.id.imageBare)
-            imageView.setImageURI(imageUri)
-        }
+        startActivity(intent)
     }
 }

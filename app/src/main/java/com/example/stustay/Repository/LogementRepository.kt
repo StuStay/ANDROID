@@ -2,27 +2,44 @@ package com.example.stustay.Repository
 
 
 
-
 import com.example.stustay.Model.Logement
-import com.example.stustay.Model.LogementDetails
-import retrofit2.Response
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 import tn.esprit.safeguardapplication.Api.LogementApiService
 
+class LogementRepository(private var logementApiService: LogementApiService) {
 
+    init {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://your_base_url_here/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-class LogementRepository(private val logementApiService: LogementApiService) {
+        logementApiService = retrofit.create(LogementApiService::class.java)
+    }
 
-    suspend fun getAllLogements(): Response<List<Logement>> = logementApiService.getAllLogements()
+    suspend fun createLogement(logementData: Logement) {
+        val jsonData = JsonObject().apply {
+            addProperty("titre", logementData.titre)
+            addProperty("description", logementData.description)
+            addProperty("nom", logementData.nom)
+            addProperty("nombreChambre", logementData.nombreChambre)
+            addProperty("prix", logementData.prix)
+            addProperty("contact", logementData.contact)
+            addProperty("lieu", logementData.lieu)
+        }
 
-    suspend fun getLogementDetails(id: String): Response<LogementDetails> = logementApiService.getLogementDetails(id)
+        logementApiService.createLogement(jsonData)
+    }
 
-    suspend fun createLogement(logement: Logement): Response<Logement> = logementApiService.createLogement(logement)
+    suspend fun getAllLogements(): List<Logement> {
+        return logementApiService.getAllLogements()
+    }
 
-    suspend fun updateLogement(id: String, logement: Logement): Response<Logement> = logementApiService.updateLogement(id, logement)
-
-    suspend fun deleteLogement(id: String): Response<Void> = logementApiService.deleteLogement(id)
-
-    suspend fun searchLogementByLieu(lieu: String): Response<Logement> = logementApiService.searchLogementByLieu(lieu)
-
-    suspend fun sortLogementByTitreAsc(): Response<List<Logement>> = logementApiService.sortLogementByTitreAsc()
+    suspend fun deleteLogement(logementId: String) {
+        logementApiService.deleteLogement(logementId)
+    }
 }
