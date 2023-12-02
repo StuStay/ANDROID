@@ -39,23 +39,23 @@ handleCreditCardInfo(cardNumber, cvv, expiryDate)
 }
 }
 
-private fun handleCreditCardInfo(cardNumber: String, cvv: String, expiryDate: String) {
-val paymentData = Payment(
-amount = 300,
-date = "2023-12-01",
-method = "credit card",
-numberOfRoommates = 0,
-isRecurringPayment = false,
-recurringPaymentFrequency = "Monthly",
-paymentType = listOf("water")
-)
+    private fun handleCreditCardInfo(cardNumber: String, cvv: String, expiryDate: String) {
+        val paymentData = Payment(
+            _id = "",
+            amount = 300,
+            date = "2023-12-01",
+            method = "credit card",
+            numberOfRoommates = 0,
+            paymentType = listOf("water")
+        )
 
-CoroutineScope(Dispatchers.IO).launch {
-paymentRepository.postPayment(paymentData)
+        CoroutineScope(Dispatchers.IO).launch {
+            paymentRepository.postPayment(paymentData)
 
-navigateToPaymentList()
-}
-}
+            navigateToPaymentList()
+        }
+    }
+
 
 private fun navigateToPaymentList() {
 val intent = Intent(this, PaymentListActivity::class.java)

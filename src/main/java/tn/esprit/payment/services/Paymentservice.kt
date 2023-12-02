@@ -15,9 +15,11 @@ interface Paymentservice {
     @DELETE("api/payments/{paymentId}")
     suspend fun deletePayment(@Path("paymentId") paymentId: String)
 
+
     @GET("api/payments")
     suspend fun getAllPayments(): List<Payment>
 }
+
 
 
 

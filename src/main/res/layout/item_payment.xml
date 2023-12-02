@@ -33,19 +33,7 @@
         android:text="@string/label_number_of_roommates"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewRecurringPayment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_recurring_payment"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewRecurringPaymentFrequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_recurring_payment_frequency"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewPaymentType"

@@ -18,8 +18,6 @@
     <string name="label_date">Date: %s</string>
     <string name="label_method">Method: %s</string>
     <string name="label_number_of_roommates">Number of Roommates: %d</string>
-    <string name="label_recurring_payment">Recurring Payment: %s</string>
-    <string name="label_recurring_payment_frequency">Recurring Payment Frequency: %s</string>
     <string name="label_payment_type">Payment Type: %s</string>
     <string name="close">Close</string>
     <string name="todo">TODO</string>

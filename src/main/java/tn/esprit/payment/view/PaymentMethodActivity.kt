@@ -9,6 +9,7 @@ class PaymentMethodActivity : AppCompatActivity() {
     private lateinit var cashbtn: Button
     private lateinit var cardbtn: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.paymentmethod)
@@ -34,4 +35,5 @@ class PaymentMethodActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
 }

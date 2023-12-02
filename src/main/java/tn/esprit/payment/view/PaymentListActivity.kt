@@ -6,7 +6,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,14 +22,23 @@ class PaymentListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.paymentlist)
-        Log.i("payment_page", "this is the payment page")
+
         val recyclerViewPayments = findViewById<RecyclerView>(R.id.recyclerView)
-        paymentAdapter = PaymentAdapter(this@PaymentListActivity, emptyList())
+        paymentAdapter = PaymentAdapter(this@PaymentListActivity, emptyList()) { paymentId ->
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    paymentRepository.deletePayment(paymentId)
+                    loadPayments()
+                } catch (e: Exception) {
+                    Log.e("PaymentListActivity", "Error deleting payment: ${e.message}")
+                }
+            }
+        }
+
         recyclerViewPayments.adapter = paymentAdapter
         recyclerViewPayments.layoutManager = LinearLayoutManager(this)
 
         paymentRepository = PaymentRepository(PaymentRepository.buildService())
-
         loadPayments()
 
         val closeBtn = findViewById<Button>(R.id.closebtn2)
@@ -39,23 +47,16 @@ class PaymentListActivity : AppCompatActivity() {
         }
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun loadPayments() {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO) {
             try {
-                val payments = withContext(Dispatchers.IO) {
-                    paymentRepository.getAllPayments()
-                }
-                Log.i("Received payments:",  "$payments")
+                val payments = paymentRepository.getAllPayments()
                 withContext(Dispatchers.Main) {
                     paymentAdapter.setData(payments)
-                    println("Data set to adapter. Item count: ${paymentAdapter.itemCount}")
                 }
             } catch (e: Exception) {
-                Log.e("Error loading payments:", e.toString())
-                e.printStackTrace()
+                Log.e("PaymentListActivity", "Error loading payments: ${e.message}")
             }
         }
     }
 }
-
