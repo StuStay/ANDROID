@@ -17,6 +17,14 @@
             android:layout_height="111dp"
             android:src="@drawable/logo" />
 
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sélectionner une image depuis la galerie"
+            android:backgroundTint="#67BAD0"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
