@@ -1,9 +1,4 @@
-package com.example.stustay.Views1
-
-import LogementAdapter
-import com.example.stustay.R
-import tn.esprit.logement.viewmodels.LogementViewModel
-
+package com.example.stustay.Views
 
 import android.os.Bundle
 import android.util.Log
@@ -12,16 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stustay.Model1.Logement
-import com.example.stustay.Repository1.LogementRepository
+import com.example.stustay.Api.LogementApiService
+import com.example.stustay.Model.Logement
+import com.example.stustay.R
+import com.example.stustay.Repository.LogementRepository
+import com.example.stustay.Ui.Adapters.LogementAdapter
+import com.example.stustay.ViewModel.LogementViewModel
 import com.google.gson.JsonObject
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import tn.esprit.safeguardapplication.Api.LogementApiService
-
 
 class LogementListActivity : AppCompatActivity() {
 
