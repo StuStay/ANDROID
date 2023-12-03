@@ -1,6 +1,6 @@
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
+
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,7 @@ class LogementAdapter(
         val etContact: TextView = binding.etContact
         val etLieu: TextView = binding.etLieu
 
-        fun bind(logement: Logement) {
+        /*fun bind(logement: Logement) {
             etTitre.text = logement.titre
             etDescription.text = logement.description
             etNom.text = logement.nom
@@ -29,7 +29,7 @@ class LogementAdapter(
             etPrix.text = logement.prix.toString()
             etContact.text = logement.contact
             etLieu.text = logement.lieu
-        }
+        }*/
     }
 
 
