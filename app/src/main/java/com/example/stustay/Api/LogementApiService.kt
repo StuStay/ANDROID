@@ -1,7 +1,8 @@
 package com.example.stustay.Api
 
-import com.example.stustay.Model1.Logement
-import com.example.stustay.Model1.LogementDetails
+import com.example.stustay.Model.Logement
+import com.example.stustay.Model.LogementDetails
+
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.Body

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stustay.Api.LogementApiService
@@ -12,7 +12,7 @@ import com.example.stustay.Model.Logement
 import com.example.stustay.R
 import com.example.stustay.Repository.LogementRepository
 import com.example.stustay.Ui.Adapters.LogementAdapter
-import com.example.stustay.ViewModel.LogementViewModel
+
 import com.google.gson.JsonObject
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -23,18 +23,19 @@ import kotlinx.coroutines.withContext
 class LogementListActivity : AppCompatActivity() {
 
     private lateinit var logementAdapter: LogementAdapter
-    private lateinit var logementViewModel: LogementViewModel
+    private lateinit var logementRepository: LogementRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.logementlist)
 
+        Log.i("logement page", "this is the logement page")
         val recyclerViewLogements = findViewById<RecyclerView>(R.id.recyclerView)
         logementAdapter = LogementAdapter(this@LogementListActivity, emptyList())
         recyclerViewLogements.adapter = logementAdapter
         recyclerViewLogements.layoutManager = LinearLayoutManager(this)
 
-        logementViewModel = ViewModelProvider(this).get(LogementViewModel::class.java)
+        logementRepository = LogementRepository(LogementRepository.buildService())
 
         loadLogements()
 

@@ -17,6 +17,15 @@
             android:layout_height="111dp"
             android:src="@drawable/logo" />
 
+        <Button
+            android:id="@+id/btnSelectPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#67BAD0"
+            android:text="Sélectionner une photo"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:onClick="onSelectPhotoClick" />
 
 
 

@@ -19,6 +19,7 @@ class LogementRepository(private var logementApiService: LogementApiService) {
 
     suspend fun createLogement(logementData: Logement) {
         val jsonData = JsonObject().apply {
+            addProperty("images",logementData.images)
             addProperty("titre", logementData.titre)
             addProperty("description", logementData.description)
             addProperty("nom", logementData.nom)
