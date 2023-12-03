@@ -1,17 +1,16 @@
-package tn.esprit.safeguardapplication.Api
+package com.example.stustay.Api
 
-import com.example.stustay.Model.Logement
-import com.example.stustay.Model.LogementDetails
+import com.example.stustay.Model1.Logement
+import com.example.stustay.Model1.LogementDetails
 import com.google.gson.JsonObject
-
-
-import retrofit2.http.Body
-import retrofit2.http.GET
-
-import retrofit2.http.POST
-
-import retrofit2.http.Path
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.DELETE
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
+
 import retrofit2.http.*
 interface LogementApiService {
 

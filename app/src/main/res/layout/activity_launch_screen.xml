@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lunchScreenBackground"
-    tools:context=".Ui.Activities.LaunchScreenActivity">
+    tools:context=".Ui1.Activities.LaunchScreenActivity">
 
     <ImageView
         android:id="@+id/logoImageView"

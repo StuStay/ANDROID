@@ -1,11 +1,12 @@
+package com.example.stustay.Ui.Adapters
+
 import android.content.Context
 import android.view.LayoutInflater
-
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stustay.Model.Logement
-import tn.esprit.logement.databinding.ItemLogementBinding
+import com.example.stustay.databinding.ItemLogementBinding
 
 class LogementAdapter(
     private var context: Context,

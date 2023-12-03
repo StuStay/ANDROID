@@ -9,6 +9,6 @@ data class LogementDetails(
     val prix: Double,
     val contact: String,
     val lieu: String,
-   // val categorie: String,
+    // val categorie: String,
 
 )

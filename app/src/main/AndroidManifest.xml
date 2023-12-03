@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Views.LogementlistActivity"
+            android:name=".Views1.LogementlistActivity"
             android:exported="false" />
         <activity
             android:name=".PostActivity"

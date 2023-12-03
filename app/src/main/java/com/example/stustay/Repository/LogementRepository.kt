@@ -1,14 +1,10 @@
 package com.example.stustay.Repository
 
-
-
+import com.example.stustay.Api.LogementApiService
 import com.example.stustay.Model.Logement
-import com.google.gson.Gson
 import com.google.gson.JsonObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-import tn.esprit.safeguardapplication.Api.LogementApiService
 
 class LogementRepository(private var logementApiService: LogementApiService) {
 

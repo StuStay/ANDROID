@@ -2,8 +2,8 @@ package tn.esprit.logement.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.stustay.Model.Logement
-import com.example.stustay.Repository.LogementRepository
+import com.example.stustay.Model1.Logement
+import com.example.stustay.Repository1.LogementRepository
 import kotlinx.coroutines.launch
 
 

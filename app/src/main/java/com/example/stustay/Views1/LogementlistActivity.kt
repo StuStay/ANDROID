@@ -1,4 +1,4 @@
-package com.example.stustay.Views
+package com.example.stustay.Views1
 
 import LogementAdapter
 import com.example.stustay.R
@@ -12,7 +12,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.stustay.Model1.Logement
+import com.example.stustay.Repository1.LogementRepository
+import com.google.gson.JsonObject
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import tn.esprit.safeguardapplication.Api.LogementApiService
 
 
 class LogementListActivity : AppCompatActivity() {
@@ -40,10 +48,33 @@ class LogementListActivity : AppCompatActivity() {
     }
     @OptIn(DelicateCoroutinesApi::class)
     private fun loadLogements() {
+        GlobalScope.launch {
+            try {
+                val logements = withContext(Dispatchers.IO) {
+                    LogementRepository.getAllLogements()
+                }
+                Log.i("Logement:",  "$logements")
+                withContext(Dispatchers.Main) {
+                    logementAdapter.setData(logements)
+                    println("Data set to adapter. Item count: ${logementAdapter.itemCount}")
+                }
+            } catch (e: Exception) {
+                Log.i("error=", e.toString())
+                e.printStackTrace()
+            }
+        }
+    }
+    private fun createMockService(): LogementApiService {
+        return object : LogementApiService {
+            override suspend fun createLogement(jsonData: JsonObject) {
+            }
 
-        logementViewModel.getAllLogements().observe(this, { logements ->
-            logementAdapter.setLogements(logements)
-            Log.i("Received logements:",  "$logements")
-        })
+            override suspend fun deleteLogement(logementId: String) {
+            }
+
+            override suspend fun getAllLogements(): List<Logement> {
+                return emptyList()
+            }
+        }
     }
 }
