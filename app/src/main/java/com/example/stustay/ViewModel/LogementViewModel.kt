@@ -18,7 +18,7 @@ class LogementViewModel(private val repository: LogementRepository) : ViewModel(
     fun getAllLogements() {
         viewModelScope.launch {
             val logements = repository.getAllLogements()
-            // Do something with the logements, like updating LiveData or UI
+
         }
     }
 
