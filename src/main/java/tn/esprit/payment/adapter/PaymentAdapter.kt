@@ -48,7 +48,7 @@ class PaymentAdapter(
             )
 
         holder.buttonDelete.setOnClickListener {
-            onDeleteClickListener.invoke(currentPayment._id) // Using _id as a String
+            currentPayment._id?.let { it1 -> onDeleteClickListener.invoke(it1) } // Using _id as a String
         }
     }
 

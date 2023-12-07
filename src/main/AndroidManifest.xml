@@ -42,6 +42,11 @@
             android:name=".view.PaymentListActivity"
             android:label="Payment List Activity" />
 
+
+        <activity
+            android:name=".view.HomePayActivity"
+            android:label="Home Paye Activity" />
+
     </application>
 
 </manifest>

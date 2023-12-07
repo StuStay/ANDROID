@@ -1,20 +1,24 @@
 package tn.esprit.payment.view
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import tn.esprit.payment.R
 
 class PaymentMethodActivity : AppCompatActivity() {
     private lateinit var cashbtn: Button
     private lateinit var cardbtn: Button
-
+    private lateinit var logoImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.paymentmethod)
         cashbtn = findViewById(R.id.buttonCashPayment)
         cardbtn = findViewById(R.id.buttonCreditCardPayment)
+        logoImageView = findViewById(R.id.imageViewLogo4)
+
         cashbtn.setOnClickListener {
             navigateToCashPending()
         }
@@ -22,6 +26,9 @@ class PaymentMethodActivity : AppCompatActivity() {
             navigateToCreditCard()
         }
 
+        logoImageView.setOnClickListener {
+            navigateToHomePay()
+        }
     }
 
     private fun navigateToCashPending() {
@@ -36,4 +43,9 @@ class PaymentMethodActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun navigateToHomePay() {
+        val intent = Intent(this, HomePayActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
