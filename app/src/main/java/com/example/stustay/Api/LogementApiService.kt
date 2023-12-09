@@ -1,9 +1,11 @@
 package com.example.stustay.Api
 
+import retrofit2.Call
 import com.example.stustay.Model.Logement
 import com.example.stustay.Model.LogementDetails
 
 import com.google.gson.JsonObject
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -16,23 +18,23 @@ import retrofit2.http.*
 interface LogementApiService {
 
     @GET("/api/logements")
-    suspend fun getAllLogements(): List<Logement>
+    fun getAllLogements(): Response<Logement>
 
     @GET("/api/logements/{id}")
-    suspend fun getLogementDetails(@Path("id") id: String): Response<LogementDetails>
+    fun getLogementDetails(@Path("id") id: String): Response<LogementDetails>
 
     @POST("/api/logements")
-    suspend fun createLogement(@Body jsonData: JsonObject)
+    fun createLogement(@Body requestBody: RequestBody): Call<Logement>
 
     @PUT("/api/logements/{id}")
-    suspend fun updateLogement(@Path("id") id: String, @Body logement: Logement): Response<Logement>
+    fun updateLogement(@Path("id") id: String, @Body logement: Logement): Response<Logement>
 
     @DELETE("/api/logements/{id}")
-    suspend fun deleteLogement(@Path("id") id: String)
+    fun deleteLogement(@Path("id") id: String)
 
     @GET("/api/logements/search/{lieu}")
-    suspend fun searchLogementByLieu(@Path("lieu") lieu: String): List<Logement>
+    fun searchLogementByLieu(@Path("lieu") lieu: String): List<Logement>
 
     @GET("/api/logements/sort")
-    suspend fun sortLogementByTitreAsc(): List<Logement>
+    fun sortLogementByTitreAsc(): List<Logement>
 }

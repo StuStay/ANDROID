@@ -1,4 +1,5 @@
-package com.example.stustay
+package com.example.stustay.Ui.Activities
+import com.example.stustay.R
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,7 @@ import android.widget.Button
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post)
+        setContentView(R.layout.activity_main)
 
         /*val btnOrderNow1: Button = findViewById(R.id.btnOrderNow1)
 

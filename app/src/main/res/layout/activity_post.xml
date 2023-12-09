@@ -132,13 +132,12 @@
 
 
         <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/btnPostLogement"
+            android:layout_width="392dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="#67BAD0"
             android:text="Soumettre"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="16dp"
-            android:onClick="onSubmitClick" />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>

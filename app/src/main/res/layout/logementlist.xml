@@ -43,13 +43,13 @@
         app:layout_constraintStart_toEndOf="@+id/backimg3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        android:contentDescription="@string/todo1" />
+        android:contentDescription="todo1" />
 
     <ImageView
         android:id="@+id/backimg3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:contentDescription="@string/todo"
+        android:contentDescription="todo"
         android:src="@drawable/back"
         app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,10 +1,10 @@
-package com.example.stustay.Retrofit
+/*package com.example.stustay.Retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "your_base_url_here"
+    private const val BASE_URL = "http://172.21.3.146:3000/"
     private var retrofit: Retrofit? = null
     val instance: Retrofit?
         get() {
@@ -15,5 +15,7 @@ object RetrofitClient {
                     .build()
             }
             return retrofit
+
         }
 }
+*/

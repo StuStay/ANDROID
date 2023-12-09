@@ -1,4 +1,4 @@
-package com.example.stustay.Ui.Adapters
+/*package com.example.stustay.Ui.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stustay.Model.Logement
+import com.example.stustay.databinding.ActivityPostBinding
 import com.example.stustay.databinding.ItemLogementBinding
 
 class LogementAdapter(
     private var context: Context,
     private var logements: List<Logement>
+    private  var  binding: ActivityPostBinding
 ) : RecyclerView.Adapter<LogementAdapter.LogementViewHolder>() {
-
     inner class LogementViewHolder(binding: ItemLogementBinding) : RecyclerView.ViewHolder(binding.root) {
         val etTitre: TextView = binding.etTitre
         val etDescription: TextView = binding.etDescription
@@ -63,4 +64,4 @@ class LogementAdapter(
         this.logements = logements
         notifyDataSetChanged()
     }
-}
+}*/

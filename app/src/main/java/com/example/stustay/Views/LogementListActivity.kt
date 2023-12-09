@@ -1,4 +1,4 @@
-package com.example.stustay.Views
+/*package com.example.stustay.Views
 
 import android.os.Bundle
 import android.util.Log
@@ -75,4 +75,4 @@ class LogementListActivity : AppCompatActivity() {
             }
         }
     }
-}
+}*/

@@ -1,73 +1,109 @@
+package com.example.stustay.Ui.Activties
+
+
+import LogementRepositoryImpl
 import android.content.Intent
-import android.net.Uri
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
+import android.util.Log
+import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import com.example.stustay.HomeActivity
+import androidx.activity.ComponentActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.stustay.R
-import com.google.android.material.textfield.TextInputEditText
+import com.example.stustay.Repository.LogementRepository
+import com.example.stustay.Repository.RetrofitInstance
+import com.example.stustay.Ui.Activities.DetailsActivity
+import com.example.stustay.ViewModel.PostActivityViewModel
+import com.example.stustay.databinding.ActivityPostBinding
 
-class PostActivity : AppCompatActivity() {
+const val POST_TAG = "Post Activity"
+const val LOGEMENT_SHARED_PREFS = "logement_shared_prefs"
+const val LOGEMENT_TITLE_KEY = "logement_title"
+const val LOGEMENT_DESCRIPTION_KEY = "logement_description"
+const val LOGEMENT_NOM_KEY ="nom_chambres"
 
-    private var selectedImageUri: Uri? = null
+// Add more keys for other logement properties here
+const val LOGEMENT_CHAMBRES_KEY ="Logement_chambres"
+const val LOGEMENT_PRIX_KEY ="prix_chambres"
+const val LOGEMENT_CONTACT_KEY ="contact_chambres"
+const val LOGEMENT_LIEU_KEY ="lieu_chambres"
 
-    // Create a launcher for the photo picker
-    private val pickMedia: ActivityResultLauncher<PickVisualMediaRequest> =
-        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            if (uri != null) {
-                selectedImageUri = uri
-                // Update your ImageView or handle the selected image URI as needed
-                val imageView: ImageView = findViewById(R.id.imageBare)
-                imageView.setImageURI(uri)
-            }
-        }
+
+
+
+class PostActivity : ComponentActivity() {
+
+    private lateinit var binding: ActivityPostBinding
+    private lateinit var viewModel: PostActivityViewModel
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post)
+        Log.d(POST_TAG, "onCreate: PostActivity created")
+        binding = ActivityPostBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences(LOGEMENT_SHARED_PREFS, MODE_PRIVATE)
+
+        val logementRepository: LogementRepository = LogementRepositoryImpl(RetrofitInstance.api)
+
+        val LogementViewModelFactory = PostActivityViewModel.Factory(logementRepository)
+
+        viewModel = ViewModelProvider(this, LogementViewModelFactory).get(PostActivityViewModel::class.java)
+        observePostLogement()
+
     }
 
-    fun onSelectPhotoClick(view: View) {
-        // Launch the photo picker and let the user choose images
-        pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    private fun observePostLogement() {
+        Log.d(POST_TAG, "observeLogement: Button Clicked!")
+
+        findViewById<Button>(R.id.btnPostLogement).setOnClickListener {
+            Log.d(POST_TAG,"hello")
+            val titre = binding.etTitre.text.toString()
+            val description = binding.etDescription.text.toString()
+            val nom = binding.etNom.text.toString()
+            val nombreChambre = binding.etNombreChambre.text.toString()
+            val prix = binding.etPrix.text.toString()
+
+            val contact = binding.etContact.text.toString()
+
+            val lieu = binding.etLieu.text.toString()
+
+
+            Toast.makeText(this@PostActivity, "Button Clicked!", Toast.LENGTH_SHORT).show()
+
+            viewModel.createLogement("", titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu).observe(this@PostActivity) { response ->
+                if (response != null) {
+                    // Save logement information to SharedPreferences
+                    saveLogementInformation(titre, description,nom,nombreChambre.toInt(),prix.toDouble(),contact,lieu)
+                    // Start DetailsViewActivity
+                    val intent = Intent(this@PostActivity, DetailsActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Log.d("Post Activity", "error")
+                }
+            }
+        }
     }
 
-    fun onSubmitClick(view: View) {
-        val titre = findViewById<TextInputEditText>(R.id.etTitre).text.toString()
-        val description = findViewById<TextInputEditText>(R.id.etDescription).text.toString()
-        val nom = findViewById<TextInputEditText>(R.id.etNom).text.toString()
-        val nombreChambre =
-            findViewById<TextInputEditText>(R.id.etNombreChambre).text.toString()
-        val prix = findViewById<TextInputEditText>(R.id.etPrix).text.toString()
-        val contact = findViewById<TextInputEditText>(R.id.etContact).text.toString()
-        val lieu = findViewById<TextInputEditText>(R.id.etLieu).text.toString()
+    private fun saveLogementInformation(title: String, description: String,nom:String,nombreChambre:Int,prix:Double,contact:String,lieu:String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(LOGEMENT_TITLE_KEY, title)
+        editor.putString(LOGEMENT_DESCRIPTION_KEY, description)
+        editor.putString(LOGEMENT_NOM_KEY, nom)
+        editor.putString(LOGEMENT_CHAMBRES_KEY, nombreChambre.toString())
+        editor.putString(LOGEMENT_PRIX_KEY, prix.toString())
+        editor.putString(LOGEMENT_CONTACT_KEY, contact)
+        editor.putString(LOGEMENT_LIEU_KEY, lieu)
 
-        if (titre.isEmpty() || description.isEmpty() || nom.isEmpty() || nombreChambre.isEmpty() ||
-            prix.isEmpty() || contact.isEmpty() || lieu.isEmpty()
-        ) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
-            return
-        }
 
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.putExtra("TITRE", titre)
-        intent.putExtra("DESCRIPTION", description)
-        intent.putExtra("NOM", nom)
-        intent.putExtra("NOMBRE_CHAMBRE", nombreChambre)
-        intent.putExtra("PRIX", prix)
-        intent.putExtra("CONTACT", contact)
-        intent.putExtra("LIEU", lieu)
 
-        // Pass the selected image URI to the HomeActivity
-        selectedImageUri?.let {
-            intent.putExtra("SELECTED_IMAGE_URI", it.toString())
-        }
 
-        startActivity(intent)
+
+
+
+        editor.apply()
     }
 }
