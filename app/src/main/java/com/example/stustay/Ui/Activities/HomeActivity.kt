@@ -25,7 +25,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        // Initialize the ViewModel
+        binding.btnHeart1.setOnClickListener {
+            val intent = Intent(this, HeartAnimationActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }

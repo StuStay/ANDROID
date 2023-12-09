@@ -20,7 +20,9 @@
         android:theme="@style/Theme.StuStay"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Ui.Activities.HeartAnimationActivity"
+            android:exported="false" />
         <activity
             android:name=".Ui.Activties.PostActivity"
             android:exported="false" />
