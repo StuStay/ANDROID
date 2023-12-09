@@ -72,36 +72,58 @@ class PostActivity : ComponentActivity() {
         }
     }
     private fun observePostLogement() {
-        Log.d(POST_TAG, "observeLogement: Button Clicked!")
-
         findViewById<Button>(R.id.btnPostLogement).setOnClickListener {
-            Log.d(POST_TAG,"hello")
             val titre = binding.etTitre.text.toString()
             val description = binding.etDescription.text.toString()
             val nom = binding.etNom.text.toString()
             val nombreChambre = binding.etNombreChambre.text.toString()
             val prix = binding.etPrix.text.toString()
-
             val contact = binding.etContact.text.toString()
-
             val lieu = binding.etLieu.text.toString()
 
 
-            Toast.makeText(this@PostActivity, "Button Clicked!", Toast.LENGTH_SHORT).show()
-
-            viewModel.createLogement("", titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu).observe(this@PostActivity) { response ->
-                if (response != null) {
-                    // Save logement information to SharedPreferences
-                    saveLogementInformation(titre, description,nom,nombreChambre.toInt(),prix.toDouble(),contact,lieu)
-                    // Start DetailsViewActivity
-                    val intent = Intent(this@PostActivity, DetailsActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Log.d("Post Activity", "error")
-                }
+            if (validateInput(titre, description, nom, nombreChambre, prix, contact, lieu)) {
+                viewModel.createLogement("", titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
+                    .observe(this@PostActivity) { response ->
+                        if (response != null) {
+                            saveLogementInformation(titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
+                            val intent = Intent(this@PostActivity, DetailsActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Log.d("Post Activity", "error")
+                        }
+                    }
             }
         }
+    }
+
+    private fun validateInput(
+        titre: String,
+        description: String,
+        nom: String,
+        nombreChambre: String,
+        prix: String,
+        contact: String,
+        lieu: String
+    ): Boolean {
+        if (titre.isEmpty() || description.isEmpty() || nom.isEmpty() || nombreChambre.isEmpty() || prix.isEmpty() || contact.isEmpty() || lieu.isEmpty()) {
+            Toast.makeText(this@PostActivity, "3abi les champs kbal o lazem contact fyh 8 chiffres!Merci.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+
+        if (contact.length != 8 || !contact.all { it.isDigit() }) {
+            Toast.makeText(this@PostActivity, "Invalid contact number (8-digit number)", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        val numberOfRooms = nombreChambre.toIntOrNull()
+        if (numberOfRooms == null || numberOfRooms !in 1..10) {
+            Toast.makeText(this@PostActivity, "Invalid number of rooms (1-10)", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
     }
 
     private fun saveLogementInformation(title: String, description: String,nom:String,nombreChambre:Int,prix:Double,contact:String,lieu:String) {
