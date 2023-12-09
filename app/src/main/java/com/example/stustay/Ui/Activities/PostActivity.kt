@@ -14,6 +14,7 @@ import com.example.stustay.R
 import com.example.stustay.Repository.LogementRepository
 import com.example.stustay.Repository.RetrofitInstance
 import com.example.stustay.Ui.Activities.DetailsActivity
+import com.example.stustay.Ui.Activities.HomeActivity
 import com.example.stustay.ViewModel.PostActivityViewModel
 import com.example.stustay.databinding.ActivityPostBinding
 
@@ -37,7 +38,9 @@ class PostActivity : ComponentActivity() {
     private lateinit var binding: ActivityPostBinding
     private lateinit var viewModel: PostActivityViewModel
     private lateinit var sharedPreferences: SharedPreferences
-
+    companion object {
+        val IMAGE_REQUEST_CODE = 1_000;
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(POST_TAG, "onCreate: PostActivity created")
@@ -53,8 +56,21 @@ class PostActivity : ComponentActivity() {
         viewModel = ViewModelProvider(this, LogementViewModelFactory).get(PostActivityViewModel::class.java)
         observePostLogement()
 
+        binding.btnPickImg.setOnClickListener {
+            pickImageFromGallery()
+        }
     }
-
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_REQUEST_CODE)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK) {
+            binding.imgSave.setImageURI(data?.data)
+        }
+    }
     private fun observePostLogement() {
         Log.d(POST_TAG, "observeLogement: Button Clicked!")
 

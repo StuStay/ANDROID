@@ -11,21 +11,35 @@
 
 
 
-        <ImageView
-            android:id="@+id/imageBare"
-            android:layout_width="match_parent"
-            android:layout_height="111dp"
-            android:src="@drawable/logo" />
-
-        <Button
-            android:id="@+id/btnSelectPhoto"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#67BAD0"
-            android:text="Sélectionner une photo"
-            android:textColor="#FFFFFF"
+            android:orientation="vertical">
+
+            <!-- First ImageView -->
+            <ImageView
+                android:id="@+id/imageBare"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:src="@drawable/logo" />
+
+            <ImageView
+                android:id="@+id/img_save"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:src="@drawable/home" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_pick_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:onClick="onSelectPhotoClick" />
+            android:backgroundTint="#67BAD0"
+            android:onClick="onSelectPhotoClick"
+            android:text="Sélectionner une photo"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
 
 
 
