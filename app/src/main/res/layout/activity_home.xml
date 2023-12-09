@@ -237,7 +237,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="#FFFFFF"
+
         app:itemTextColor="#67BAD0"
         app:itemIconTint="#67BAD0"
         app:menu="@menu/bottom_navigation_menu" />

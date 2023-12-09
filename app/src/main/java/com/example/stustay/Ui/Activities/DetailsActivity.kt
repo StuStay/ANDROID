@@ -1,10 +1,15 @@
 package com.example.stustay.Ui.Activities
 
+import LogementRepositoryImpl
 import com.example.stustay.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.example.stustay.Repository.LogementRepository
+import com.example.stustay.Repository.RetrofitInstance
 import com.example.stustay.Ui.Activties.LOGEMENT_CHAMBRES_KEY
 import com.example.stustay.Ui.Activties.LOGEMENT_CONTACT_KEY
 import com.example.stustay.Ui.Activties.LOGEMENT_DESCRIPTION_KEY
@@ -13,7 +18,11 @@ import com.example.stustay.Ui.Activties.LOGEMENT_NOM_KEY
 import com.example.stustay.Ui.Activties.LOGEMENT_PRIX_KEY
 import com.example.stustay.Ui.Activties.LOGEMENT_SHARED_PREFS
 import com.example.stustay.Ui.Activties.LOGEMENT_TITLE_KEY
+import com.example.stustay.ViewModel.DetailsViewModel
+import com.example.stustay.ViewModel.PostActivityViewModel
 import com.example.stustay.databinding.ActivityDetailsBinding
+import com.example.stustay.databinding.ActivityPostBinding
+import kotlinx.coroutines.launch
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
@@ -24,7 +33,12 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        // Retrieve the stored logement information from SharedPreferences
+
+        binding.btnBack.setOnClickListener {
+            val   intent = Intent(this , HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         val sharedPreferences = getSharedPreferences(LOGEMENT_SHARED_PREFS, MODE_PRIVATE)
         val storedTitle = sharedPreferences.getString(LOGEMENT_TITLE_KEY, null)
         val storedDescription = sharedPreferences.getString(LOGEMENT_DESCRIPTION_KEY, null)
@@ -39,7 +53,7 @@ class DetailsActivity : AppCompatActivity() {
 
         val stored = sharedPreferences.getString(LOGEMENT_CHAMBRES_KEY,null)
 
-        // Set the retrieved logement information to the TextViews
+
         binding.tvTitle.text = storedTitle
         binding.tvDescription.text = storedDescription
         binding.tvNom.text = storedNom
@@ -48,9 +62,7 @@ class DetailsActivity : AppCompatActivity() {
         binding.tvContact.text=storedContact
         binding.tvLieu.text=storedLieu
 
-        // ...
 
-        // Call the getAllLogements function and observe the LiveData
 
 
         val btnShare: ImageButton = findViewById(R.id.btnShare)

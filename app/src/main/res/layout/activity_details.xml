@@ -22,13 +22,14 @@
             android:contentDescription="Back"
             android:onClick="onBackButtonClick" />
     </androidx.appcompat.widget.Toolbar>
+
     <ImageButton
         android:id="@+id/btnShare"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_below="@id/btnPayer"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="70dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@android:drawable/ic_menu_share"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -107,8 +108,8 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="-22dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/bluecyan"
         android:text="Payer" />

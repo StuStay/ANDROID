@@ -10,12 +10,11 @@ class LauchScreenActivity:AppCompatActivity() {
     private val delay : Long = 2000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launch_screen) // Set the content view to SignInActivity layout
+        setContentView(R.layout.activity_launch_screen)
 
 
-        // Simulate a delay (e.g., 2 seconds) for the splash screen
         Handler().postDelayed({
-            val   intent = Intent(this ,PostActivity::class.java)
+            val   intent = Intent(this ,HomeActivity::class.java)
             startActivity(intent)
             finish()
         },delay)

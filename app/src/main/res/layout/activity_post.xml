@@ -17,6 +17,7 @@
             android:orientation="vertical">
 
             <!-- First ImageView -->
+
             <ImageView
                 android:id="@+id/imageBare"
                 android:layout_width="match_parent"
