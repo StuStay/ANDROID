@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -14,17 +15,17 @@ import com.example.stustay.R
 import com.example.stustay.Repository.LogementRepository
 import com.example.stustay.Repository.RetrofitInstance
 import com.example.stustay.Ui.Activities.DetailsActivity
-import com.example.stustay.Ui.Activities.HomeActivity
+
 import com.example.stustay.ViewModel.PostActivityViewModel
 import com.example.stustay.databinding.ActivityPostBinding
 
 const val POST_TAG = "Post Activity"
 const val LOGEMENT_SHARED_PREFS = "logement_shared_prefs"
+const val LOGEMENT_IMAGES_KEY = "logement_images"
 const val LOGEMENT_TITLE_KEY = "logement_title"
 const val LOGEMENT_DESCRIPTION_KEY = "logement_description"
 const val LOGEMENT_NOM_KEY ="nom_chambres"
 
-// Add more keys for other logement properties here
 const val LOGEMENT_CHAMBRES_KEY ="Logement_chambres"
 const val LOGEMENT_PRIX_KEY ="prix_chambres"
 const val LOGEMENT_CONTACT_KEY ="contact_chambres"
@@ -62,7 +63,7 @@ class PostActivity : ComponentActivity() {
     }
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
+        intent.type = "images/*"
         startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,6 +74,8 @@ class PostActivity : ComponentActivity() {
     }
     private fun observePostLogement() {
         findViewById<Button>(R.id.btnPostLogement).setOnClickListener {
+
+            val images = getImageUriFromImageView(binding.imgSave)
             val titre = binding.etTitre.text.toString()
             val description = binding.etDescription.text.toString()
             val nom = binding.etNom.text.toString()
@@ -83,10 +86,10 @@ class PostActivity : ComponentActivity() {
 
 
             if (validateInput(titre, description, nom, nombreChambre, prix, contact, lieu)) {
-                viewModel.createLogement("", titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
+                viewModel.createLogement(images, titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
                     .observe(this@PostActivity) { response ->
                         if (response != null) {
-                            saveLogementInformation(titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
+                            saveLogementInformation(images,titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
                             val intent = Intent(this@PostActivity, DetailsActivity::class.java)
                             startActivity(intent)
                             finish()
@@ -126,8 +129,9 @@ class PostActivity : ComponentActivity() {
         return true
     }
 
-    private fun saveLogementInformation(title: String, description: String,nom:String,nombreChambre:Int,prix:Double,contact:String,lieu:String) {
+    private fun saveLogementInformation(images: String,title: String, description: String,nom:String,nombreChambre:Int,prix:Double,contact:String,lieu:String) {
         val editor = sharedPreferences.edit()
+        editor.putString(LOGEMENT_IMAGES_KEY, images)
         editor.putString(LOGEMENT_TITLE_KEY, title)
         editor.putString(LOGEMENT_DESCRIPTION_KEY, description)
         editor.putString(LOGEMENT_NOM_KEY, nom)
@@ -143,5 +147,9 @@ class PostActivity : ComponentActivity() {
 
 
         editor.apply()
+    }
+    private fun getImageUriFromImageView(imageView: ImageView): String {
+
+        return ""
     }
 }
