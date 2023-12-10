@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <LinearLayout
@@ -17,6 +18,14 @@
             android:orientation="vertical">
 
 
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/back"
+                android:contentDescription="Back"
+                android:onClick="onBackButtonClick" />
             <ImageView
                 android:id="@+id/imageBare"
                 android:layout_width="match_parent"
@@ -30,6 +39,7 @@
                 android:src="@drawable/home" />
         </LinearLayout>
 
+
         <Button
             android:id="@+id/btn_pick_img"
             android:layout_width="match_parent"
@@ -41,14 +51,12 @@
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
 
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilTitre"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Titre">
+            android:hint="Titre de votre annonce">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTitre"
@@ -62,7 +70,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description">
+            android:hint="Description complete de votre annonce">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDescription"
@@ -71,13 +79,12 @@
                 android:inputType="textMultiLine"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Nom -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilNom"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nom">
+            android:hint="Nom du propriétaire">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNom"
@@ -85,7 +92,6 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Nombre de Chambres -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilNombreChambre"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -106,7 +112,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Prix">
+            android:hint="Prix/DT">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPrix"
@@ -115,13 +121,12 @@
                 android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Contact -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilContact"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contact">
+            android:hint="Contact (8chiffres)">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etContact"
@@ -136,7 +141,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Lieu">
+            android:hint="Ariana,Manouba,Ben Arous,Seliena,Mahdia,Bizerte">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLieu"
@@ -147,11 +152,13 @@
 
         <Button
             android:id="@+id/btnPostLogement"
-            android:layout_width="392dp"
-            android:layout_height="57dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#67BAD0"
-            android:text="Soumettre"
+            android:text="Soumettre votre annonce"
             android:textColor="#FFFFFF" />
+
+
     </LinearLayout>
 </ScrollView>

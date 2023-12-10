@@ -1,9 +1,15 @@
-
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -23,18 +29,18 @@
             android:onClick="onBackButtonClick" />
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageButton
-        android:id="@+id/btnShare"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_below="@id/btnPayer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:src="@android:drawable/ic_menu_share"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/btnPayer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_share"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageView
+        <ImageView
         android:id="@+id/imageDetails"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -108,10 +114,26 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/bluecyan"
         android:text="Payer" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btnReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnPayer"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/g_black"
+        android:text="Report" />
+
+    </LinearLayout>
+    </ScrollView>

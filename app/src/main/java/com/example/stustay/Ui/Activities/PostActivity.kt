@@ -15,6 +15,7 @@ import com.example.stustay.R
 import com.example.stustay.Repository.LogementRepository
 import com.example.stustay.Repository.RetrofitInstance
 import com.example.stustay.Ui.Activities.DetailsActivity
+import com.example.stustay.Ui.Activities.HomeActivity
 
 import com.example.stustay.ViewModel.PostActivityViewModel
 import com.example.stustay.databinding.ActivityPostBinding
@@ -56,14 +57,21 @@ class PostActivity : ComponentActivity() {
 
         viewModel = ViewModelProvider(this, LogementViewModelFactory).get(PostActivityViewModel::class.java)
         observePostLogement()
-
+        binding.btnBack.setOnClickListener {
+            onBackButtonClick()
+        }
         binding.btnPickImg.setOnClickListener {
             pickImageFromGallery()
         }
     }
+    private fun onBackButtonClick() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "images/*"
+        intent.type = "image/*"
         startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -72,7 +80,7 @@ class PostActivity : ComponentActivity() {
             binding.imgSave.setImageURI(data?.data)
         }
     }
-    private fun observePostLogement() {
+    private fun observePostLogement()  {
         findViewById<Button>(R.id.btnPostLogement).setOnClickListener {
 
             val images = getImageUriFromImageView(binding.imgSave)
@@ -84,21 +92,29 @@ class PostActivity : ComponentActivity() {
             val contact = binding.etContact.text.toString()
             val lieu = binding.etLieu.text.toString()
 
-
             if (validateInput(titre, description, nom, nombreChambre, prix, contact, lieu)) {
                 viewModel.createLogement(images, titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
                     .observe(this@PostActivity) { response ->
                         if (response != null) {
-                            saveLogementInformation(images,titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
+                            saveLogementInformation(images, titre, description, nom, nombreChambre.toInt(), prix.toDouble(), contact, lieu)
                             val intent = Intent(this@PostActivity, DetailsActivity::class.java)
                             startActivity(intent)
                             finish()
+
+                            // Show a success message
+                            showToast("Annonce created successfully!")
                         } else {
                             Log.d("Post Activity", "error")
+                            // Show an error message
+                            showToast("Error creating logement. Please try again.")
                         }
                     }
             }
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this@PostActivity, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun validateInput(
@@ -111,7 +127,7 @@ class PostActivity : ComponentActivity() {
         lieu: String
     ): Boolean {
         if (titre.isEmpty() || description.isEmpty() || nom.isEmpty() || nombreChambre.isEmpty() || prix.isEmpty() || contact.isEmpty() || lieu.isEmpty()) {
-            Toast.makeText(this@PostActivity, "3abi les champs kbal o lazem contact fyh 8 chiffres!Merci.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@PostActivity, "Invalid,you must apply!", Toast.LENGTH_SHORT).show()
             return false
         }
 
