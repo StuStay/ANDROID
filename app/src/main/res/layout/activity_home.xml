@@ -33,7 +33,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Search adresse near you"
+        android:hint="Recherche StuStay"
         android:padding="16dp" />
 
     <HorizontalScrollView
@@ -57,6 +57,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/cardView1"
                     android:layout_width="match_parent"
                     android:layout_height="472dp"
                     android:padding="16dp">
@@ -81,7 +82,7 @@
                         android:layout_marginLeft="-302dp"
                         android:layout_marginTop="298dp"
                         android:layout_toRightOf="@id/image1"
-                        android:text="Amazing apartment for a family!" />
+                        android:text="Ariana" />
 
 
                     <Button
@@ -103,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/description1"
-                        android:layout_marginLeft="97dp"
+                        android:layout_marginLeft="119dp"
                         android:layout_marginTop="43dp"
                         android:layout_toRightOf="@id/btnOrderNow1"
                         android:backgroundTint="#67BAD0"
@@ -119,6 +120,7 @@
                 android:layout_margin="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/cardView2"
                     android:layout_width="match_parent"
                     android:layout_height="472dp"
                     android:padding="16dp">
@@ -141,7 +143,7 @@
                         android:layout_marginLeft="-302dp"
                         android:layout_marginTop="298dp"
                         android:layout_toRightOf="@id/image2"
-                        android:text="Cozy studio with a great view!" />
+                        android:text="Sidi Salah Studio" />
 
                     <Button
                         android:id="@+id/btnOrderNow2"
@@ -171,6 +173,7 @@
                 android:layout_margin="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/cardView3"
                     android:layout_width="match_parent"
                     android:layout_height="472dp"
                     android:padding="16dp">
@@ -193,7 +196,7 @@
                         android:layout_marginLeft="-302dp"
                         android:layout_marginTop="298dp"
                         android:layout_toRightOf="@id/image3"
-                        android:text="Cozy studio with a great view!" />
+                        android:text="Mourouj" />
 
                     <Button
                         android:id="@+id/btnOrderNow3"
@@ -202,8 +205,8 @@
                         android:layout_below="@id/description3"
                         android:layout_marginStart="23dp"
                         android:layout_marginTop="37dp"
-                        android:text="Order Now"
-                        android:onClick="onOrderNowClick"/>
+                        android:onClick="onOrderNowClick"
+                        android:text="Order Now" />
 
                     <Button
                         android:id="@+id/btnHeart3"
