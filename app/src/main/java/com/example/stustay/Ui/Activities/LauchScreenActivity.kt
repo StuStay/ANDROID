@@ -14,7 +14,7 @@ class LauchScreenActivity:AppCompatActivity() {
 
 
         Handler().postDelayed({
-            val   intent = Intent(this ,HomeActivity::class.java)
+            val   intent = Intent(this ,PostActivity::class.java)
             startActivity(intent)
             finish()
         },delay)

@@ -13,6 +13,6 @@
         android:icon="@drawable/search" />
     <item
         android:id="@+id/menu_item4"
-        android:title="Portefeuille"
+        android:title="Wallet"
         android:icon="@drawable/wallet" />
 </menu>
