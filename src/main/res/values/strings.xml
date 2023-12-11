@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">StuStay</string>
+    <string name="label_amount" />
+    <string name="label_date" />
+    <string name="label_method" />
+    <string name="label_number_of_roommates" />
+    <string name="close" />
+    <string name="todo1" />
+    <string name="todo" />
+    <string name="payment_history" />
+    <string name="label_payment_type" />
+</resources>
