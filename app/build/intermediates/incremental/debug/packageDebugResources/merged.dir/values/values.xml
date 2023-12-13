@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="g_black">#33405f</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">StuStay</string>
+    <style name="Base.Theme.StuStay" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.StuStay" parent="Base.Theme.StuStay"/>
+</resources>

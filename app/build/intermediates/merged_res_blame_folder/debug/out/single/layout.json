@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.example.stustay.app-mergeDebugResources-32:/layout/activity_update_profil.xml",
+        "source": "com.example.stustay.app-main-35:/layout/activity_update_profil.xml"
+    },
+    {
+        "merged": "com.example.stustay.app-mergeDebugResources-32:/layout/activity_main.xml",
+        "source": "com.example.stustay.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.stustay.app-mergeDebugResources-32:/layout/activity_profile.xml",
+        "source": "com.example.stustay.app-main-35:/layout/activity_profile.xml"
+    },
+    {
+        "merged": "com.example.stustay.app-mergeDebugResources-32:/layout/activity_signup.xml",
+        "source": "com.example.stustay.app-main-35:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "com.example.stustay.app-mergeDebugResources-32:/layout/activity_login.xml",
+        "source": "com.example.stustay.app-main-35:/layout/activity_login.xml"
+    }
+]
