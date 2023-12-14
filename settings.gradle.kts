@@ -13,5 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "StuStay"
+rootProject.name = "Payment"
 include(":app")
+ 

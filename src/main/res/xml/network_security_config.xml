@@ -1,0 +1,8 @@
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- Trust specific domains or IP addresses -->
+            <certificates src="@raw/certif" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
