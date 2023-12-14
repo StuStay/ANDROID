@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">YourAppName</string>
+
+    <string name="label_payment_amount">Payment Amount</string>
+    <string name="hint_enter_amount">Enter Amount</string>
+
+    <string name="label_card_number">Card Number</string>
+    <string name="hint_enter_card_number">Enter Card Number</string>
+
+    <string name="label_expiration_date">Expiration Date</string>
+    <string name="hint_enter_expiration_date">MM/YY</string>
+
+    <string name="label_cvv">CVV</string>
+    <string name="hint_enter_cvv">Enter CVV</string>
+
+    <string name="button_pay">Pay</string>
+    <string name="label_amount">Amount: %d</string>
+    <string name="label_date">Date: %s</string>
+    <string name="label_method">Method: %s</string>
+    <string name="label_number_of_roommates">Number of Roommates: %d</string>
+    <string name="label_payment_type">Payment Type: %s</string>
+    <string name="close">Close</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO</string>
+    <string name="payment_history">Payment History</string>
+</resources>
+
+

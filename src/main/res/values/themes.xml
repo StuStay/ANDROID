@@ -1,0 +1,7 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Payment" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Base.Theme.StuStay" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Theme.Payment" parent="Base.Theme.Payment" />
+    <style name="Theme.StuStay" parent="Base.Theme.StuStay" />
+</resources>
